@@ -1,0 +1,54 @@
+<!-- shipping.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Confirmation - SOOPRA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="shipping-confirmation-container">
+        <div class="confirmation-box">
+            <h2>Order Confirmation</h2>
+            <div class="confirmation-details">
+                <div class="order-status">
+                    <img src="checkmark.png" alt="Success" class="success-icon">
+                    <h3>Order Successfully Placed!</h3>
+                    <p>Your order confirmation number: <span id="orderNumber"></span></p>
+                </div>
+                <div class="shipping-details">
+                    <h3>Shipping Details</h3>
+                    <div id="shippingInfo"></div>
+                </div>
+                <div class="estimated-delivery">
+                    <h3>Estimated Delivery</h3>
+                    <p>Your order will be delivered within 3-5 business days</p>
+                </div>
+                <button onclick="window.location.href='index.html'" class="return-home-btn">Return to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modify the existing purchase.html form submission to redirect here instead of index.html
+        window.onload = function() {
+            // Generate random order number
+            document.getElementById('orderNumber').textContent = 'SO-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
+            // Display shipping info from localStorage if available
+            const shippingInfo = JSON.parse(localStorage.getItem('shippingInfo'));
+            if (shippingInfo) {
+                document.getElementById('shippingInfo').innerHTML = `
+                    <p><strong>Name:</strong> ${shippingInfo.name}</p>
+                    <p><strong>Address:</strong> ${shippingInfo.address}</p>
+                    <p><strong>City:</strong> ${shippingInfo.city}</p>
+                    <p><strong>Postal Code:</strong> ${shippingInfo.postalCode}</p>
+                    <p><strong>Email:</strong> ${shippingInfo.email}</p>
+                    <p><strong>Phone:</strong> ${shippingInfo.phone}</p>
+                `;
+            }
+        };
+    </script>
+</body>
+</html>

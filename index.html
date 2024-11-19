@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOOPRA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="border-bottom">
+            <div class="nav-container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <a href="index.html" class="logo-link">
+                            <img src="logo.png" alt="SOOPRA Logo" class="logo-image">
+                        </a>
+                    </div>
+                    <div class="nav-actions">
+                        <a href="login.html" class="user-icon-link">
+                            <div class="user-icon-container">
+                                <img src="user.png" alt="User Img" class="user-icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-carousel">
+        <!-- Slide 1 -->
+        <div class="hero-slide active">
+            <img src="banner1.png" alt="Slide 1">
+        </div>
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+            <img src="banner2.png" alt="Slide 2">
+        </div>
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+            <img src="banner3.png" alt="Slide 3">
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="prev-slide" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next-slide" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+</div>
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+
+    function showSlide(index, direction) {
+        // Remove active class from all slides
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active', 'prev', 'next');
+            
+            // Set the slide's position based on direction
+            if (i === index) {
+                slide.classList.add('active');
+            } else if (direction === 'next' && i < index) {
+                slide.classList.add('prev');
+            } else if (direction === 'prev' && i > index) {
+                slide.classList.add('next');
+            }
+        });
+    }
+
+    function changeSlide(n) {
+        const direction = n > 0 ? 'next' : 'prev';
+        currentSlideIndex = (currentSlideIndex + n + slides.length) % slides.length;
+        showSlide(currentSlideIndex, direction);
+    }
+
+    // Initial display
+    showSlide(currentSlideIndex, 'next');
+
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+        changeSlide(1);
+    }, 8000);
+</script>
+
+        <!-- Featured Products -->
+<div class="featured-section">
+    <h2>FEATURED</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe1.png" alt="Nike Air Force 1 Low" class="product-image"
+                     onmouseover="this.src='shoe1.1.png'" 
+                     onmouseout="this.src='shoe1.png'">
+                <div class="product-info">
+                    <h3>Tiffany & Co. Nike Air Force 1 Low</h3>
+                    <p class="colors">Size 11 UK</p>
+                    <p class="price">RM2200</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe2.png" alt="Nike Air Max 90" class="product-image"
+                     onmouseover="this.src='shoe2.1.png'" 
+                     onmouseout="this.src='shoe2.png'">
+                <div class="product-info">
+                    <h3>Nike Air Max 90 "Snakeskin"</h3>
+                    <p class="colors">Size 10 UK</p>
+                    <p class="price">RM2550</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe3.png" alt="Adizero Adios Pro Evo 1" class="product-image"
+                     onmouseover="this.src='shoe3.1.png'" 
+                     onmouseout="this.src='shoe3.png'">
+                <div class="product-info">
+                    <h3>adidas x Pharrell Williams Adizero Adios Pro Evo 1 "Earth"</h3>
+                    <p class="colors">Size 11 UK</p>
+                    <p class="price">RM2400</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe4.png" alt="Air Jordan 4" class="product-image"
+                     onmouseover="this.src='shoe4.1.png'" 
+                     onmouseout="this.src='shoe4.png'">
+                <div class="product-info">
+                    <h3>Air Jordan 4 RM “Diffused Blue/Ashen Slate”</h3>
+                    <p class="colors">Size 12 UK</p>
+                    <p class="price">RM2900</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe5.png" alt=" Converse All Star" class="product-image"
+                     onmouseover="this.src='shoe5.1.png'" 
+                     onmouseout="this.src='shoe5.png'">
+                <div class="product-info">
+                    <h3>Converse All Star(R) GORE-TEX Hi “Off White/Black”</h3>
+                    <p class="colors">Size 12.5 UK</p>
+                    <p class="price">RM2120</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe6.png" alt="New Balance 997" class="product-image"
+                     onmouseover="this.src='shoe6.1.png'" 
+                     onmouseout="this.src='shoe6.png'">
+                <div class="product-info">
+                    <h3>New Balance 997 “Vintage Teal”</h3>
+                    <p class="colors">Size 10.5 UK</p>
+                    <p class="price">RM1890</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe7.png" alt="KICKS LAB. × PUMA" class="product-image"
+                     onmouseover="this.src='shoe7.1.png'" 
+                     onmouseout="this.src='shoe7.png'">
+                <div class="product-info">
+                    <h3>KICKS LAB. × PUMA Palermo MIJ KL Sport</h3>
+                    <p class="colors">Size 11.6 UK</p>
+                    <p class="price">RM2024</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-content">
+                <img src="shoe8.png" alt="Reebok Ltd" class="product-image"
+                     onmouseover="this.src='shoe8.1.png'" 
+                     onmouseout="this.src='shoe8.png'">
+                <div class="product-info">
+                    <h3>Reebok Ltd Premier Road Ultra</h3>
+                    <p class="colors">Size 10 UK</p>
+                    <p class="price">RM1500</p>
+                    <button class="shop-now-btn" onclick="window.location.href='purchase.html'">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+
+        <!-- Passion Section -->
+        <div class="passion-section">
+            <div class="passion-container">
+                <div class="passion-content">
+                    <div class="passion-text">
+                        <h2>ABOUT US</h2>
+                        <p>Dedicated to crafting the perfect footwear for every people's journey.<br>Phone : 01867534609<br>E-mail : soopra@gmail.com</p>
+                    </div>
+                    <div class="passion-image">
+                        <img src="lifestyle.png" alt="Lifestyle">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>Subscribe for Exclusive Offers</h2>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to display alert on subscribe button click -->
+    <script>
+        document.querySelector('.subscribe-btn').addEventListener('click', function() {
+            const emailInput = document.querySelector('.newsletter-form input[type="email"]');
+            if (emailInput.value) {
+                showNotification("Thank you for subscribing! We will inform you when there's a new offer or an event a week early before everybody else!", 'success');
+                emailInput.value = ''; // Clear input after successful subscription
+            } else {
+                showNotification("Please enter a valid email.", 'error');
+            }
+        });
+    
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+    
+            // Remove notification after animation
+            setTimeout(() => {
+                notification.classList.add('fade-out');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
